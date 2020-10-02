@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const {pool} = require('./config')
+const { request, response } = require('express')
 
 const app = express()
 
@@ -18,10 +19,16 @@ const getData = (request, response) => {
   })
 }
 
+const getTest = (request, response) => {
+  response.send('YAY')
+}
+
 app
   .route('/mopitdata')
   // GET endpoint
   .get(getData)
+
+app.route('/testroute').get(getTest)
 
 // Start server
 app.listen( 3002, () => {
