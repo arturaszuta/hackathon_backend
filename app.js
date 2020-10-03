@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors())
 
 const getData = (request, response) => {
-  pool.query('SELECT * FROM mopitt_data', (error, results) => {
+  pool.query('SELECT * FROM finaldata', (error, results) => {
     if (error) {
       throw error
     }
@@ -19,16 +19,11 @@ const getData = (request, response) => {
   })
 }
 
-const getTest = (request, response) => {
-  response.send('YAY')
-}
-
 app
-  .route('/mopitdata')
+  .route('/finaldata')
   // GET endpoint
   .get(getData)
 
-app.route('/testroute').get(getTest)
 
 // Start server
 app.listen( 3002, () => {
