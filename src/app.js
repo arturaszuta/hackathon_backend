@@ -14,6 +14,6 @@ app.use('/api', api);
 
 
 // Start server
-app.listen(3002, () => {
+app.listen(process.env.PORT || 3002, () => {
   console.log(`Server listening`)
 })
